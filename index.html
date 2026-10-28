@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Reversal Using Stack</title>
+    <style>
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f4f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+            width: 100%;
+            max-width: 420px;
+            text-align: center;
+        }
+
+        h1 { color: #17365d; font-size: 1.6rem; }
+
+        p { color: #4b5563; line-height: 1.5; }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 12px 0;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        input:focus {
+            outline: 2px solid #1769aa;
+            border-color: transparent;
+        }
+
+        button {
+            background: #1769aa;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        button:hover { background: #104d80; }
+
+        #result {
+            margin-top: 20px;
+            padding: 14px;
+            background: #e8f5e9;
+            border-radius: 6px;
+            overflow-wrap: anywhere;
+            min-height: 48px;
+            color: #14532d;
+        }
+
+        .small { margin-top: 18px; font-size: 0.85rem; color: #64748b; }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <h1>String Reversal Using Stack</h1>
+        <p>Enter a word or sentence. The stack will reverse the characters using the LIFO principle.</p>
+
+        <form id="reverseForm">
+            <label for="inputString">Your string</label>
+            <input
+                type="text"
+                id="inputString"
+                placeholder="e.g. HELLO"
+                autocomplete="off"
+                required
+            >
+            <button type="submit">Reverse String</button>
+        </form>
+
+        <div id="result" aria-live="polite">Reversed string will appear here.</div>
+        <p class="small">Stack principle: Last In, First Out (LIFO)</p>
+    </main>
+
+    <script>
+        document.getElementById("reverseForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const text = document.getElementById("inputString").value;
+            const stack = [];
+
+            // Push each character onto the stack.
+            for (const character of text) {
+                stack.push(character);
+            }
+
+            let reversed = "";
+
+            // Pop characters from the stack to reverse the string.
+            while (stack.length > 0) {
+                reversed += stack.pop();
+            }
+
+            document.getElementById("result").textContent =
+                "Reversed string: " + reversed;
+        });
+    </script>
+</body>
+</html>
